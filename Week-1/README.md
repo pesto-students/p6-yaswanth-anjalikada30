@@ -12,7 +12,7 @@ The moment you enter this address in your browser and you hit ENTER, a lot of di
 3. The response of the server is parsed
 4. The page is rendered and displayed
 
-                        ![image](https://user-images.githubusercontent.com/113002603/193410219-33501b2b-35cc-4098-8b31-d1c33366d198.png)
+![image](https://user-images.githubusercontent.com/113002603/193410219-33501b2b-35cc-4098-8b31-d1c33366d198.png)
 
 For now, let's imagine that the web is a road. On one end of the road is the client, which is like your house. On the other end of the road is the server, which is a shop you want to buy something from.
 
