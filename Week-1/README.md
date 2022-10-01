@@ -16,7 +16,7 @@ The moment you enter this address in your browser and you hit ENTER, a lot of di
 
 For now, let's imagine that the web is a road. On one end of the road is the client, which is like your house. On the other end of the road is the server, which is a shop you want to buy something from.
 
-1.**Your internet connection**: 
+1. **Your internet connection**: 
 Allows you to send and receive data on the web. It's basically like the street between your house and the shop.
 2. **TCP/IP**: 
 Transmission Control Protocol and Internet Protocol are communication protocols that define how data should travel across the internet. This is like the transport mechanisms that let you place an order, go to the shop, and buy your goods. In our example, this is like a car or a bike (or however else you might get around).
