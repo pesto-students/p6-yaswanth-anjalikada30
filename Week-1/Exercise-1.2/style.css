@@ -74,7 +74,20 @@ header section {
 header li {
     display: inline;
 }
+/* styles for body */
+article table {
+    height: 30vh;
+    width: 97%;
+    padding: 2%;
+}
 
+tr:nth-child(even) {
+    background-color:  rgba(231, 220, 220, 0.899);;
+}
+td button {
+    padding: 2px;
+    color: blue;
+}
 /* styles for footer */
 footer img {
     width: 10%;
