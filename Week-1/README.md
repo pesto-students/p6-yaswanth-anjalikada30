@@ -39,3 +39,39 @@ When you type a web address into your browser (for our analogy that's like walki
 3. If the server approves the client's request, the server sends the client a "200 OK" message, which means "Of course you can look at that website! Here it is", and then starts sending the website's files to the browser as a series of small chunks called data packets (the shop gives you your goods, and you bring them back to your house).
 4. The browser assembles the small chunks into a complete web page and displays it to you (the goods arrive at your door — new shiny stuff, awesome!).
 
+# High level components of a browser:
+
+The below image shows the main components of a web browser:
+
+![image](https://user-images.githubusercontent.com/113002603/193410930-2e7a5be1-558e-4031-b2a4-ddb6ddcf143b.png)
+
+1. **The User Interface**:
+The user interface is the space where User interacts with the browser. It includes the address bar, back and next buttons, home button, refresh and stop, bookmark option, etc. Every other part, except the window where requested web page is displayed, comes under it.
+
+2. **The Browser Engine**: 
+The browser engine works as a bridge between the User interface and the rendering engine. According to the inputs from various user interfaces, it queries and manipulates the rendering engine.
+
+3. **The Rendering Engine**: 
+The rendering engine, as the name suggests is responsible for rendering the requested web page on the browser screen. The rendering engine interprets the HTML, XML documents and images that are formatted using CSS and generates the layout that is displayed in the User Interface. However, using plugins or extensions, it can display other types data also. Different browsers user different rendering engines:
+- Internet Explorer: Trident
+- Firefox & other Mozilla browsers: Gecko
+- Chrome & Opera 15+: Blink
+- Chrome (iPhone) & Safari: Webkit
+
+4. **Networking**: 
+Component of the browser which retrieves the URLs using the common internet protocols of HTTP or FTP. The networking component handles all aspects of Internet communication and security. The network component may implement a cache of retrieved documents in order to reduce network traffic.
+
+5. **JavaScript Interpreter**: 
+It is the component of the browser which interprets and executes the javascript code embedded in a website. The interpreted results are sent to the rendering engine for display. If the script is external then first the resource is fetched from the network. Parser keeps on hold until the script is executed.
+
+6. **UI Backend**: 
+UI backend is used for drawing basic widgets like combo boxes and windows. This backend exposes a generic interface that is not platform specific. It underneath uses operating system user interface methods.
+
+7. **Data Persistence/Storage**: 
+This is a persistence layer. Browsers support storage mechanisms such as localStorage, IndexedDB, WebSQL and FileSystem. It is a small database created on the local drive of the computer where the browser is installed. It manages user data such as cache, cookies, bookmarks and preferences.
+
+
+
+
+
+
