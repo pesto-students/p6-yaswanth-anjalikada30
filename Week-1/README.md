@@ -81,7 +81,7 @@ We describe five steps in the critical rendering path.
 ## Parsing:
 Once the browser receives the first chunk of data, it can begin parsing the information received. Parsing is the step the browser takes to turn the data it receives over the network into the DOM and CSSOM, which is used by the renderer to paint a page to the screen.
 
-!. **Building the DOM tree**:
+1. **Building the DOM tree**:
 The first step is processing the HTML markup and building the DOM tree. HTML parsing involves tokenization and tree construction.
 The DOM is the internal representation of the markup for the browser. The DOM is also exposed, and can be manipulated through various APIs in JavaScript.
 
