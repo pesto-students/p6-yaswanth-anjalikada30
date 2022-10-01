@@ -16,13 +16,13 @@ The moment you enter this address in your browser and you hit ENTER, a lot of di
 
 For now, let's imagine that the web is a road. On one end of the road is the client, which is like your house. On the other end of the road is the server, which is a shop you want to buy something from.
 
-###### Your internet connection: 
+**Your internet connection**: 
 Allows you to send and receive data on the web. It's basically like the street between your house and the shop.
-###### TCP/IP: 
+**TCP/IP**: 
 Transmission Control Protocol and Internet Protocol are communication protocols that define how data should travel across the internet. This is like the transport mechanisms that let you place an order, go to the shop, and buy your goods. In our example, this is like a car or a bike (or however else you might get around).
-###### DNS:
+**DNS**:
 Domain Name System is like an address book for websites. When you type a web address in your browser, the browser looks at the DNS to find the website's IP address before it can retrieve the website. The browser needs to find out which server the website lives on, so it can send HTTP messages to the right place (see below). This is like looking up the address of the shop so you can access it.
-###### HTTP: 
+**HTTP**: 
 Hypertext Transfer Protocol is an application protocol that defines a language for clients and servers to speak to each other. This is like the language you use to order your goods.
 ###### Component files: 
 A website is made up of many different files, which are like the different parts of the goods you buy from the shop. These files come in two main types:
@@ -43,7 +43,7 @@ When you type a web address into your browser (for our analogy that's like walki
 
 The below image shows the main components of a web browser:
 
-![image](https://user-images.githubusercontent.com/113002603/193410930-2e7a5be1-558e-4031-b2a4-ddb6ddcf143b.png)
+![image](https://user-images.githubusercontent.com/113002603/193413392-737677e7-8ff6-4207-a4e3-26ca62cb256c.png)
 
 1. **The User Interface**:
 The user interface is the space where User interacts with the browser. It includes the address bar, back and next buttons, home button, refresh and stop, bookmark option, etc. Every other part, except the window where requested web page is displayed, comes under it.
@@ -70,11 +70,11 @@ UI backend is used for drawing basic widgets like combo boxes and windows. This 
 7. **Data Persistence/Storage**: 
 This is a persistence layer. Browsers support storage mechanisms such as localStorage, IndexedDB, WebSQL and FileSystem. It is a small database created on the local drive of the computer where the browser is installed. It manages user data such as cache, cookies, bookmarks and preferences.
 
-##Rendering engine: 
+# Rendering engine: 
 
 The networking layer will start sending the contents of the requested documents to the rendering engine in chunks of 8KBs.
 
-                  ![image](https://user-images.githubusercontent.com/113002603/193411687-8c427e9e-f140-49b6-931f-2a0d6adf57e4.png)
+![image](https://user-images.githubusercontent.com/113002603/193411687-8c427e9e-f140-49b6-931f-2a0d6adf57e4.png)
 
 We describe five steps in the critical rendering path.
 
@@ -107,9 +107,11 @@ Tags that aren't going to be displayed, like the <head> and its children and any
 
 4. **Layout**:
 The fourth step in the critical rendering path is running layout on the render tree to compute the geometry of each node.
+  
 After the construction of the render tree, it goes through a *layout process* of the render tree. When the renderer is created and added to the tree, it does not have a position and size. The process of calculating these values is called layout or reflow. 
 *Layout* is the process by which the width, height, and location of all the nodes in the render tree are determined, plus the determination of the size and position of each object on the page.
 *Reflow* is any subsequent size and position determination of any part of the page or the entire document.
+  
 The position of the root renderer is 0,0 and its dimensions are the viewport–the visible part of the browser window.
 All renderers have a “layout” or “reflow” method, each renderer invokes the layout method of its children that need layout.
 
