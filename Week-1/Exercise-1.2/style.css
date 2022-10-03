@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* styles for layout */
+nav {
+    background-color: rgba(231, 220, 220, 0.899);
+    width: 3%;
+    height: 85vh;
+    float: left;
+}
+
+header {
+    background-color: black;
+    width: 97%;
+    height: 35vh;
+    float: right;
+    color: white;
+}
+
+article {
+    height: 50vh;
+    width: 97%;
+    float: left;
+}
+
+/* Clear floats after the columns */
+section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+footer {
+    background-color: blue;
+    height: 15vh;
+    width: 100vw;
+    color: white;
+}
+
+/* styles for navbar */
+ul {
+    list-style: none;
+}
+
+nav ul :first-child i {
+    margin-top: 3vh;
+}
+
+nav i {
+    color: black;
+    margin-bottom: 5.5vh;
+    margin-left: 30%;
+}
+
+/* styles for header */
+header img {
+    width: 15%;
+    height: 23vh;
+    padding: 3%;
+    float: left;
+}
+
+header section {
+    float: left;
+    padding-top: 3%;
+}
+
+header li {
+    display: inline;
+}
+/* styles for body */
+article table {
+    height: 30vh;
+    width: 97%;
+    padding: 2%;
+}
+
+tr:nth-child(even) {
+    background-color:  rgba(231, 220, 220, 0.899);;
+}
+td button {
+    padding: 2px;
+    color: blue;
+}
+/* styles for footer */
+footer img {
+    width: 10%;
+    height: 12.5vh;
+    padding: 0.5%;
+    float: left;
+}
+
+footer section {
+    float: left;
+}
+
+footer ul {
+    margin-top: 5.5vh;
+    float: right;
+}
+
+footer li {
+    display: inline;
+    
+}
+
+footer ul :not(:last-child) {
+    margin-right: 150px;
+}
+
+footer ul :last-child {
+    margin-right: 10px;
+}
+
+/*common styles*/
+.space-above {
+    margin-top: 20px;
+}
+
+.space-below {
+    margin-bottom: 80px;
+}
