@@ -7,7 +7,7 @@ This information may be in the form of pictures, web pages, videos, and other fi
 
 Let’s start with the most obvious way of using the internet. You visit a website like academind.com.
 The moment you enter this address in your browser and you hit ENTER, a lot of different things happen:
-1. The URL gets resolved
+1. The URL gets resolved(using DNS)
 2. A Request is sent to the server of the website
 3. The response of the server is parsed
 4. The page is rendered and displayed
@@ -38,6 +38,48 @@ When you type a web address into your browser (for our analogy that's like walki
 2. The browser sends an HTTP request message to the server, asking it to send a copy of the website to the client (you go to the shop and order your goods). This message, and all other data sent between the client and the server, is sent across your internet connection using TCP/IP.
 3. If the server approves the client's request, the server sends the client a "200 OK" message, which means "Of course you can look at that website! Here it is", and then starts sending the website's files to the browser as a series of small chunks called data packets (the shop gives you your goods, and you bring them back to your house).
 4. The browser assembles the small chunks into a complete web page and displays it to you (the goods arrive at your door — new shiny stuff, awesome!).
+
+## DNS Resolution:
+
+The DNS Resolution process starts when the user types a URL address on the browser and hits Enter. At this point, the browser asks the operating system for a specific page, in this case google.com.
+
+![image](https://user-images.githubusercontent.com/113002603/193535285-39ef00c9-3536-4a64-8bfc-55034f9a268e.png)
+
+- **Step 1: OS Recursive Query to DNS Resolver**
+
+  Since the operating system doesn’t know where “www.google.com” is, it queries a DNS resolver. The query the OS sends to the DNS Resolver has a special flag that tells it is a “recursive query.” This means that the resolver must complete the recursion and the response must be either an IP address or an error.
+   At this point, the resolver goes through a process called recursion to convert the domain name into an IP address.
+   
+- **Step 2: DNS Resolver Iterative Query to the Root Server**
+
+  The resolver starts by querying one of the root DNS servers for the IP of “www.google.com.” This query does not have the recursive flag and therefore is an “iterative query,” meaning its response must be an address, the location of an authoritative name server, or an error.
+  There are 13 root server clusters named A-M with servers in over 380 locations. They are managed by 12 different organizations that report to the Internet Assigned Numbers Authority (IANA), such as Verisign.
+
+- **Step 3: Root Server Response**
+
+  These root servers hold the locations of all of the top level domains (TLDs) such as .com, .de, .io, and newer generic TLDs such as .camera.
+The root doesn’t have the IP info for “www.google.com,” but it knows that .com might know, so it returns the location of the .com servers.
+
+- **Step 4:  DNS Resolver Iterative Query to the TLD Server**
+
+  Next the resolver queries one of the .com name servers for the location of google.com. Like the Root Servers, each of the TLDs have 4-13 clustered name servers existing in many locations. There are two types of TLDs: country codes (ccTLDs) run by government organizations, and generic (gTLDs). Every gTLD has a different commercial entity responsible for running these servers. In this case, we will be using the gTLD servers controlled by Verisign, who run the .com, .net, .edu, and .gov among gTLDs.
+
+- **Step 5: TLD Server Response**
+
+  Each TLD server holds a list of all of the authoritative name servers for each domain in the TLD. For example, each of the 13 .com gTLD servers has a list with all of the name servers for every single .com domain. The .com gTLD server does not have the IP addresses for google.com, but it knows the location of google.com’s name servers. The .com gTLD server responds with a list of all of google.com’s NS records. In this case Google has four name servers, “ns1.google.com” to “ns4.google.com.”
+
+- **Step 6: DNS Resolver Iterative Query to the Google.com NS**
+
+  Finally, the DNS resolver queries one of Google’s name server for the IP of “www.google.com.”
+
+- **Step 7: Google.com NS Response**
+
+  This time the queried Name Server knows the IPs and responds with an A or AAAA address record (depending on the query type) for IPv4 and IPv6, respectively.
+
+- **Step 8: DNS Resolver Response to OS**
+
+  At this point the resolver has finished the recursion process and is able to respond to the end user’s operating system with an IP address.
+
 
 # High level components of a browser:
 
@@ -82,65 +124,58 @@ We describe five steps in the critical rendering path.
 Once the browser receives the first chunk of data, it can begin parsing the information received. Parsing is the step the browser takes to turn the data it receives over the network into the DOM and CSSOM, which is used by the renderer to paint a page to the screen.
 
 1. **Building the DOM tree**:
-The first step is processing the HTML markup and building the DOM tree. HTML parsing involves tokenization and tree construction.
+
+  The first step is processing the HTML markup and building the DOM tree. HTML parsing involves tokenization and tree construction.
 The DOM is the internal representation of the markup for the browser. The DOM is also exposed, and can be manipulated through various APIs in JavaScript.
 
 ![image](https://user-images.githubusercontent.com/113002603/193412275-11315a81-8eda-4866-8f79-55be09cc6f07.png)
 
-When the parser finds non-blocking resources, such as an image, the browser will request those resources and continue parsing. Parsing can continue when a CSS file is encountered, but <script> tags—particularly those without an async or defer attribute—block rendering, and pause the parsing of HTML.
+  When the parser finds non-blocking resources, such as an image, the browser will request those resources and continue parsing. Parsing can continue when a CSS file is encountered, but <script> tags—particularly those without an async or defer attribute—block rendering, and pause the parsing of HTML.
 
 **Preload scanner**:
 While the browser builds the DOM tree, this process occupies the main thread. As this happens, the preload scanner will parse through the content available and request high priority resources like CSS, JavaScript, and web fonts. Thanks to the preload scanner, we don't have to wait until the parser finds a reference to an external resource to request it.
 
 2. **Building the CSSOM**:
-The second step in the critical rendering path is processing CSS and building the CSSOM tree. The CSS object model is similar to the DOM. 
+
+  The second step in the critical rendering path is processing CSS and building the CSSOM tree. The CSS object model is similar to the DOM. 
 The browser converts the CSS rules into a map of styles it can understand and work with. 
 The browser goes through each rule set in the CSS, creating a tree of nodes with parent, child, and sibling relationships based on the CSS selectors.
 
 ## Render:
-Rendering steps include style, layout, paint and, in some cases, compositing. 
+  Rendering steps include style, layout, paint and, in some cases, compositing. 
 The CSSOM and DOM trees created in the parsing step are combined into a render tree which is then used to compute the layout of every visible element, which is then painted to the screen.
 
 3. **Style**:
-The third step in the critical rendering path is combining the DOM and CSSOM into a **render tree**. The computed style tree, or render tree, construction starts with the root of the DOM tree, traversing each visible node.
+
+  The third step in the critical rendering path is combining the DOM and CSSOM into a **render tree**. The computed style tree, or render tree, construction starts with the root of the DOM tree, traversing each visible node.
 Tags that aren't going to be displayed, like the <head> and its children and any nodes with display: none, such as the script { display: none; }
 
 4. **Layout**:
-The fourth step in the critical rendering path is running layout on the render tree to compute the geometry of each node.
+
+  The fourth step in the critical rendering path is running layout on the render tree to compute the geometry of each node.
   
-After the construction of the render tree, it goes through a *layout process* of the render tree. When the renderer is created and added to the tree, it does not have a position and size. The process of calculating these values is called layout or reflow. 
-*Layout* is the process by which the width, height, and location of all the nodes in the render tree are determined, plus the determination of the size and position of each object on the page.
-*Reflow* is any subsequent size and position determination of any part of the page or the entire document.
+  After the construction of the render tree, it goes through a *layout process* of the render tree. When the renderer is created and added to the tree, it does not have a position and size. The process of calculating these values is called layout or reflow. 
+  *Layout* is the process by which the width, height, and location of all the nodes in the render tree are determined, plus the determination of the size and position of each object on the page.
+  *Reflow* is any subsequent size and position determination of any part of the page or the entire document.
   
-The position of the root renderer is 0,0 and its dimensions are the viewport–the visible part of the browser window.
+  The position of the root renderer is 0,0 and its dimensions are the viewport–the visible part of the browser window.
 All renderers have a “layout” or “reflow” method, each renderer invokes the layout method of its children that need layout.
 
 5. **Paint**:
-The last step in the critical rendering path is painting the individual nodes to the screen, the first occurrence of which is called the first meaningful paint. 
+
+  The last step in the critical rendering path is painting the individual nodes to the screen, the first occurrence of which is called the first meaningful paint. 
 In the painting or rasterization phase, the browser converts each box calculated in the layout phase to actual pixels on the screen. 
 Painting involves drawing every visual part of an element to the screen, including text, colors, borders, shadows, and replaced elements like buttons and images. 
 The browser needs to do this super quickly.
 
 **Compositing**:
-When sections of the document are drawn in different layers, overlapping each other, compositing is necessary to ensure they are drawn to the screen in the right order and the content is rendered correctly.
+
+  When sections of the document are drawn in different layers, overlapping each other, compositing is necessary to ensure they are drawn to the screen in the right order and the content is rendered correctly.
 
 ## Interactivity:
 
-Once the main thread is done painting the page, you would think we would be *all set.* That isn't necessarily the case. If the load includes JavaScript, that was correctly deferred, and only executed after the onload event fires, the main thread might be busy, and not available for scrolling, touch, and other interactions.
+  Once the main thread is done painting the page, you would think we would be *all set.* That isn't necessarily the case. If the load includes JavaScript, that was correctly deferred, and only executed after the onload event fires, the main thread might be busy, and not available for scrolling, touch, and other interactions.
 
-Time to Interactive (TTI) is the measurement of how long it took from that first request which led to the DNS lookup and SSL connection to when the page is interactive — interactive being the point in time after the First Contentful Paint when the page responds to user interactions within 50ms. If the main thread is occupied parsing, compiling, and executing JavaScript, it is not available and therefore not able to respond to user interactions in a timely (less than 50ms) fashion.
+Time to Interactive (TTI) is the measurement of how long it took from that first request which led to the DNS lookup and SSL connection to when the page is interactive — interactive being the point in time after the First Contentful Paint when the page responds to user interactions within 50ms. 
 
 If the main thread is occupied parsing, compiling, and executing JavaScript, it is not available and therefore not able to respond to user interactions in a timely (less than 50ms) fashion. That is not a good user experience. Avoid occupying the main thread.
-
-
-
-
-
-
-
-
-
-
-
-
-
