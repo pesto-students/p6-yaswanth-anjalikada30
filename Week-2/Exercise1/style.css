@@ -2,39 +2,70 @@
     margin: 0;
     padding: 0;
 }
+ul {
+    list-style-type: none;
+}
 /*styles for layout*/
 header {
     width: 100%;
-    height: 12vh;
-    background-color: aqua;
+    height: 15vh;
+    background-color: black;
+    color: white;
 }
-
 section {
     width: 100%;
     height: 70vh;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 section  > article {
-    width: 700px;
-    height: 60vh;
-    background-color: lightgreen;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    width: 705px;
+    height: 65vh;
+    margin: 15px;
     flex-shrink: 0;
+    padding: 10px;
+    background-color: rgba(245, 239, 239, 0.978);
 }
-
 form {
-    width: 100%;
     height: 80vh;
-    background-color: lightcoral;
+    padding: 10px;
+}
+/*styles for header*/
+header > h2 {
+    font-size: 3rem;
+    padding: 3px;
+}
+header > div {
+    font-size: 2rem;
+    padding: 3px;
 }
 
-footer {
-    width: 100%;
-    height: 10vh;
-    background-color: lightgray;
+/*styles for section*/
+.title {
+    font-size: 2.5rem;
+}
+#article1 p{
+    padding: 10px;
+}
+#article1 img {
+    margin-left: 100px;
+}
+#article2 {
+    height: 50vh;
+}
+#article2 li {
+    padding: 15px;
+}
+.form-item {
+    padding: 10px;
+}
+#submit {
+    padding: 5px;
+    border: none;
+    background-color: lightblue;
+}
+#submit:hover {
+    background-color: blue;
 }
