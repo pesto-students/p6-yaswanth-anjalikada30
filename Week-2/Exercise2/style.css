@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+}
+
+#parent {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#content {
+    position: absolute;
+    font-size: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#red-square {
+    position: absolute;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    transition: all 1.5s ease;
+}
+
+#yellow-square {
+    position: absolute;
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    right: 0;
+    transition: all 1.5s ease;
+}
+
+#blue-square {
+    position: absolute;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 0;
+    transition: all 1.5s ease;
+}
+
+#green-square {
+    position: absolute;
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    right: 0;
+    transition: all 1.5s ease;
+}
+/* On hovering parent, each square should rotate 90deg by its outermost corner */
+#parent:hover #red-square {
+    transform: translate(-100%) rotate(90deg);
+}
+
+#parent:hover #yellow-square {
+    transform: translate(100%) rotate(-90deg);
+}
+
+#parent:hover #blue-square {
+    transform: translate(-100%) rotate(-90deg);
+}
+
+#parent:hover #green-square {
+    transform: translate(100%) rotate(90deg);
+}
