@@ -1,63 +1,83 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 ul {
     list-style-type: none;
 }
+
 /*styles for layout*/
-header {
-    width: 100%;
-    height: 15vh;
-    background-color: black;
-    color: white;
-}
-section {
-    width: 100%;
-    height: 70vh;
+
+#flex-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-flow: row wrap;
 }
 
-section  > article {
-    width: 705px;
-    height: 65vh;
-    margin: 15px;
-    flex-shrink: 0;
-    padding: 10px;
-    background-color: rgba(245, 239, 239, 0.978);
+#flex-container>* {
+    margin: 10px;
+    padding: 5px;
+    flex: 1 100%;
 }
-form {
-    height: 80vh;
-    padding: 10px;
+
+header {
+    background-color: lightgreen;
+    background-color: darkslategray;
+    color: white;
 }
+
+#section1 {
+    background-color: rgb(240, 238, 238);
+    flex: 1;
+}
+
+#section2 {
+    background-color: rgb(240, 238, 238);
+    flex: 1;
+}
+
+#section3 {
+    background-color: rgb(240, 238, 238);
+}
+
+footer {
+    background-color: lightblue;
+}
+
+@media all and (max-width: 950px) {
+    #section1 {
+        flex: 1 100%;
+    }
+
+    #section2 {
+        flex: 1 100%;
+    }
+}
+
 /*styles for header*/
 header > h2 {
-    font-size: 3rem;
-    padding: 3px;
-}
-header > div {
     font-size: 2rem;
     padding: 3px;
 }
-
-/*styles for section*/
-.title {
-    font-size: 2.5rem;
+header > div {
+    font-size: 1.5rem;
+    padding: 3px;
 }
-#article1 p{
+
+/*styles for section1*/
+.title {
+    font-size: 1.5rem;
+}
+#section1 p{
     padding: 10px;
 }
-#article1 img {
-    margin-left: 100px;
-}
-#article2 {
-    height: 50vh;
-}
-#article2 li {
+
+/*styles for section2*/
+#section2 li {
     padding: 15px;
 }
+
+/*styles for section3*/
 .form-item {
     padding: 10px;
 }
@@ -68,4 +88,9 @@ header > div {
 }
 #submit:hover {
     background-color: blue;
+}
+
+/*styles for footer*/
+footer {
+    font-size: 2rem;
 }
