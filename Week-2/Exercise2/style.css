@@ -66,17 +66,25 @@
 }
 /* On hovering parent, each square should rotate 90deg by its outermost corner */
 #parent:hover #red-square {
-    transform: translate(-100%) rotate(90deg);
+    /* transform: translate(-100%) rotate(90deg); */
+    transform-origin: top left;
+    transform: rotate(90deg);
 }
 
 #parent:hover #yellow-square {
-    transform: translate(100%) rotate(-90deg);
+    /* transform: translate(100%) rotate(-90deg); */
+    transform-origin: top right;
+    transform: rotate(-90deg);
 }
 
 #parent:hover #blue-square {
-    transform: translate(-100%) rotate(-90deg);
+    /* transform: translate(-100%) rotate(-90deg); */
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
 }
 
 #parent:hover #green-square {
-    transform: translate(100%) rotate(90deg);
-}
+    /* transform: translate(100%) rotate(90deg); */
+    transform-origin: bottom right;
+    transform: rotate(90deg);
+} 
