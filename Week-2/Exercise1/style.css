@@ -80,6 +80,9 @@ header > div {
 .form-item {
     padding: 10px;
 }
+.cand-title {
+    margin-left: 10px;
+}
 #submit {
     padding: 5px;
     border: none;
