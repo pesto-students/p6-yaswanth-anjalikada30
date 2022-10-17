@@ -2,8 +2,8 @@
 const person1 = {
     name: 'Anjali',
     state: 'Andhra Pradesh',
-    printName: function () {
-        console.log(`${this.name} from ${this.state} state.`)
+    printName: function (city, country) {
+        console.log(`${this.name} from ${city}, ${this.state}, ${country}.`)
     }
 }
 
@@ -12,5 +12,5 @@ const person2 = {
     state: 'Andhra Pradesh',
 }
 
-person1.printName();  //prints Anjali from Andhra Pradesh state.
-person1.printName.call(person2); //prints Kada from Andhra Pradesh state.
+person1.printName('Hyderabad', 'India');  //prints Anjali from Hyderabad, Andhra Pradesh, India.
+person1.printName.call(person2, 'Hyderabad', 'India'); //prints Kada from Hyderabad, Andhra Pradesh, India.
