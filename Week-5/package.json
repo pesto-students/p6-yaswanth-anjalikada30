@@ -1,0 +1,14 @@
+{
+  "name": "week-5",
+  "version": "1.0.0",
+  "description": "week-5 assignments",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.2.2"
+  }
+}
