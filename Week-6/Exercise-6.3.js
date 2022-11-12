@@ -32,3 +32,7 @@ const sortColors = function (nums) {
 const nums = [2, 0, 2, 1, 1, 0];
 sortColors(nums)
 console.log(nums)
+/*
+    Time complexity = O(n)
+    Space complexity = O(1)
+ */
