@@ -26,3 +26,7 @@ const isPairWithDifferenceExists = (nums, k) => {
 }
 const arr = [5, 10, 5, 2, 50, 80, 5]
 console.log(isPairWithDifferenceExists(arr, 78))
+/*
+    Time complexity = O(n)
+    Space complexity = O(n)
+ */
