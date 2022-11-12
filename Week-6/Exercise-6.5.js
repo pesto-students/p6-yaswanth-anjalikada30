@@ -1,28 +1,22 @@
-const isPairWithDifferenceExists = (A, B) => {
+const isPairWithDifferenceExists = (nums, k) => {
     const map = new Map();
     let ans = 0;
-    const res = []
-    // for (let i = 0; i < A.length; i++) {
-    //     for (let j = i + 1; j < A.length; j++) {
-    //         if (A[i] - A[j] === B || (A[i] - A[j]) * (-1) === B)
-    //             return 1;
-    //     }
-    // }
-    // return 0;
-    A.forEach(num => {
+    //find frequency of each element 
+    nums.forEach(num => {
         if (map.has(num))
             map.set(num, map.get(num) + 1)
         else map.set(num, 1)
     })
-    console.log(map.get(100))
-    A.forEach(num => {
-        if (B === 0) {
-            if(map.get(num) === 2){
+    nums.forEach(num => {
+        if (k === 0) {
+            //if k is zero check if any element has count greater than 1 
+            if (map.get(num) > 1) {
                 ans = 1
                 return;
             }
         } else {
-            if (map.has(num - B)) {
+            //check if difference of current value and k is present in map
+            if (map.has(num - k)) {
                 ans = 1
                 return;
             }
@@ -30,5 +24,5 @@ const isPairWithDifferenceExists = (A, B) => {
     })
     return ans;
 }
-const arr = [5, 10, 5, 2, 50, 80]
-console.log(isPairWithDifferenceExists(arr, 0))
+const arr = [5, 10, 5, 2, 50, 80, 5]
+console.log(isPairWithDifferenceExists(arr, 78))
