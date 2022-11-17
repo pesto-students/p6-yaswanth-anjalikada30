@@ -37,4 +37,9 @@ ll.print()
 ll.head = rotateLinkedList(ll.head, 2);
 ll.print()
 
+/*
+    Time Complexity = O(n)
+    Space Complexity = O(1)
+ */
+
 
