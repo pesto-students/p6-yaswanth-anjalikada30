@@ -37,4 +37,8 @@ class Queue{
         return this.#que.search(element);
     }
 }
+/*
+    Time complexity, for enqueue = O(1) for dequeue = O(n)
+    Space complexity = O(n)
+ */
 module.exports = Queue;
