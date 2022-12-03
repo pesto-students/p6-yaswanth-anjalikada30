@@ -17,3 +17,8 @@ var findJudge = function(n, trust) {
     }
     return -1;
 };
+
+/*
+    Time complexity - O(n)
+    Space complexity - O(n)
+ */

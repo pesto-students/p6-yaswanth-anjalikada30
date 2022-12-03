@@ -13,3 +13,8 @@ var allPathsSourceTarget = function(graph) {
     getAllPaths(graph, [0], allPaths, graph.length)
     return allPaths;
 };
+
+/*
+    Time complexity - 
+    Space complexity - 
+*/
