@@ -1,4 +1,5 @@
 import React from 'react'
+import { Droppable } from 'react-beautiful-dnd';
 import { TODOSTATUS_DONE, TODOSTATUS_INPROGRESS, TODOSTATUS_TODO } from '../../constants/todoStatus';
 import Todo from '../todo/Todo';
 import './styles.css';
@@ -47,32 +48,59 @@ function TodoList({ todoList, setTodos }) {
     }
     const getItems = (status) => {
         return (
-            todoList?.filter(todo => todo.status === status).map(todo =>
+            todoList?.filter(todo => todo.status === status).map((todo, index) =>
                 <React.Fragment key={todo.id}>
-                    <Todo content={todo} handleTodoAction={handleTodoAction} />
+                    <Todo content={todo} handleTodoAction={handleTodoAction} index={index} />
                 </React.Fragment>)
         )
     }
     return (
         <div className='todo_list'>
-            <div className='todo_items_container'>
-                <div className='todo_items'>
-                    <div>To do</div>
-                    {getItems(TODOSTATUS_TODO)}
-                </div>
-            </div>
-            <div className='inprogress_items_container'>
-                <div className='inprogress_items'>
-                    <div>In progress</div>
-                    {getItems(TODOSTATUS_INPROGRESS)}
-                </div>
-            </div>
-            <div className='completed_items_container'>
-                <div className='completed_items'>
-                    <div>Done</div>
-                    {getItems(TODOSTATUS_DONE)}
-                </div>
-            </div>
+            <Droppable droppableId='Todo_list'>
+                {
+                    (provided) => (
+                        <div className='todo_items_container'
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}>
+                            <div className='todo_items'>
+                                <div>To do</div>
+                                {getItems(TODOSTATUS_TODO)}
+                                {provided.placeholder}
+                            </div>
+                        </div>
+                    )
+                }
+            </Droppable>
+            <Droppable droppableId='Inprogress_list'>
+                {
+                    (provided) => (
+                        <div className='inprogress_items_container'
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}>
+                            <div className='inprogress_items'>
+                                <div>In progress</div>
+                                {getItems(TODOSTATUS_INPROGRESS)}
+                                {provided.placeholder}
+                            </div>
+                        </div>
+                    )
+                }
+            </Droppable>
+            <Droppable droppableId='Completed_list'>
+                {
+                    (provided) => (
+                        <div className='completed_items_container'
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}>
+                            <div className='completed_items'>
+                                <div>Done</div>
+                                {getItems(TODOSTATUS_DONE)}
+                                {provided.placeholder}
+                            </div>
+                        </div>
+                    )
+                }
+            </Droppable>
         </div>
     )
 }
