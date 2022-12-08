@@ -1,0 +1,48 @@
+.todo_list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+    width: 95%;
+}
+
+.todo_items_container {
+    height: 73vh;
+    overflow: auto;
+    width: 32%;
+    background-color: peachpuff;
+}
+
+.todo_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inprogress_items_container {
+    height: 73vh;
+    background-color: aquamarine;
+    width: 32%;
+}
+
+.inprogress_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.completed_items_container {
+    height: 73vh;
+    background-color: lightgreen;
+    width: 32%;
+}
+
+.completed_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
