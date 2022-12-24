@@ -1,4 +1,4 @@
-## Live demo
+# Live demo
 
 Project is live here - https://url-shortner-a.netlify.app/
 
